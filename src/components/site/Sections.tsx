@@ -1,30 +1,82 @@
 import { useState } from "react";
-import { ArrowRight, Minus, Plus, X } from "lucide-react";
-import { business, faqs, images, projects, reasons, services, steps, testimonials, type Project } from "@/config/site";
+import { ArrowRight, Minus, Plus, X, Sparkles, Check } from "lucide-react";
+import {
+  business,
+  faqs,
+  images,
+  projects,
+  reasons,
+  services,
+  steps,
+  testimonials,
+  type Project,
+} from "@/config/site";
 import { Reveal, SectionHead } from "./Reveal";
 import { cn } from "@/lib/utils";
 
 export function Hero() {
   return (
-    <section id="home" className="relative flex min-h-[100svh] items-end overflow-hidden text-ink-foreground">
-      <img src={images.hero} alt="Floral wedding reception stage with warm lighting" width={1920} height={1088}
-        className="absolute inset-0 h-full w-full object-cover" fetchPriority="high" />
+    <section
+      id="home"
+      className="relative flex min-h-[100svh] items-end overflow-hidden bg-burgundy text-rose"
+    >
+      <img
+        src={images.hero}
+        alt="Floral luxury wedding reception stage with ambient candlelight"
+        width={1920}
+        height={1088}
+        className="absolute inset-0 h-full w-full object-cover object-center opacity-65"
+        fetchPriority="high"
+      />
       <div className="hero-scrim absolute inset-0" />
-      <div className="container-x relative pb-16 pt-32 md:pb-24">
-        <div className="max-w-2xl">
-          <p className="eyebrow opacity-90">Event Planning &amp; Bespoke Decor</p>
-          <h1 className="mt-5 text-5xl leading-[1.05] md:text-7xl">
-            Beautifully Planned.<br /><em className="font-light">Unforgettable Moments.</em>
+
+      {/* Decorative subtle gold glow overlay */}
+      <div className="pointer-events-none absolute inset-0 bg-radial-gradient from-transparent via-transparent to-black/40" />
+
+      <div className="container-x relative z-10 pb-16 pt-36 md:pb-24">
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 border border-gold/30 bg-burgundy/60 px-4 py-1.5 backdrop-blur-md">
+            <Sparkles className="h-3.5 w-3.5 text-gold" />
+            <p className="eyebrow tracking-[0.28em] text-gold">{business.tagline}</p>
+          </div>
+
+          <h1 className="mt-6 text-5xl leading-[1.08] text-ivory md:text-7xl lg:text-8xl">
+            Beautifully Planned.
+            <br />
+            <em className="font-light italic text-gold/90">Unforgettable Moments.</em>
           </h1>
-          <p className="mt-6 max-w-lg leading-relaxed opacity-90 md:text-lg">
-            From intimate celebrations to grand weddings, we bring your vision to life with thoughtful planning, beautiful details, and seamless execution.
+
+          <p className="mt-6 max-w-xl text-base leading-relaxed text-rose md:text-lg">
+            From monumental palace weddings to intimate candlelit celebrations, we curate immersive
+            environments with thoughtful planning, bespoke floral artistry, and serene execution.
           </p>
-          <div className="mt-9 flex flex-wrap gap-3">
-            <a href="#work" className="bg-ink-foreground px-7 py-3.5 text-xs uppercase tracking-[0.18em] text-ink transition-opacity hover:opacity-90">Explore Our Work</a>
-            <a href="#contact" className="border border-ink-foreground/70 px-7 py-3.5 text-xs uppercase tracking-[0.18em] transition-colors hover:bg-ink-foreground hover:text-ink">Plan Your Event</a>
+
+          <div className="mt-10 flex flex-wrap items-center gap-4">
+            <a
+              href="#work"
+              className="border border-gold bg-gold px-8 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-burgundy shadow-lg transition-all duration-300 hover:bg-gold/90 hover:shadow-gold/20"
+            >
+              Explore Our Work
+            </a>
+            <a
+              href="#contact"
+              className="border border-gold/60 bg-burgundy/40 px-8 py-4 text-xs font-semibold uppercase tracking-[0.22em] text-ivory backdrop-blur-sm transition-all duration-300 hover:border-gold hover:bg-gold hover:text-burgundy"
+            >
+              Plan Your Event
+            </a>
           </div>
         </div>
-        <p className="mt-14 border-t border-ink-foreground/30 pt-5 text-xs uppercase tracking-[0.2em] opacity-80">{business.serviceArea}</p>
+
+        <div className="mt-16 flex flex-col justify-between gap-4 border-t border-gold/20 pt-6 text-xs uppercase tracking-[0.24em] text-rose/70 md:flex-row md:items-center">
+          <p>{business.serviceArea}</p>
+          <div className="flex items-center gap-6">
+            <span>Bespoke Decor</span>
+            <span className="text-gold">•</span>
+            <span>Floral Architecture</span>
+            <span className="text-gold">•</span>
+            <span>Day-Of Direction</span>
+          </div>
+        </div>
       </div>
     </section>
   );
@@ -32,23 +84,72 @@ export function Hero() {
 
 export function About() {
   return (
-    <section id="about" className="py-24 md:py-36">
-      <div className="container-x grid items-center gap-12 md:grid-cols-12 md:gap-16">
-        <Reveal className="md:col-span-5">
-          <img src={images.mandap} alt="Jasmine-draped wedding mandap" width={896} height={1152} loading="lazy" className="aspect-[4/5] w-full object-cover" />
-        </Reveal>
-        <Reveal className="md:col-span-6 md:col-start-7">
-          <p className="eyebrow text-accent">About Us</p>
-          <h2 className="mt-4 text-4xl leading-tight md:text-5xl">Every Celebration Has a Story</h2>
-          <p className="mt-7 font-serif text-2xl leading-snug text-primary">
-            We believe every celebration deserves to feel personal.
-          </p>
-          <div className="mt-6 space-y-5 leading-relaxed text-muted-foreground">
-            <p>From the first idea to the final detail, we work closely with you to create thoughtful experiences that reflect your style, your traditions, and the moments that matter most.</p>
-            <p>Our approach pairs considered design with calm, careful execution — so you can be present with your guests while we take care of the rest.</p>
+    <section id="about" className="relative py-24 md:py-36">
+      <div className="container-x grid items-center gap-12 lg:grid-cols-12 lg:gap-16">
+        <Reveal className="lg:col-span-5">
+          <div className="group relative">
+            {/* Fine decorative champagne gold frame behind image */}
+            <div className="absolute -inset-3 border border-gold/25 transition-transform duration-700 group-hover:scale-95" />
+            <div className="relative overflow-hidden bg-wine">
+              <img
+                src={images.mandap}
+                alt="Jasmine draped royal wedding mandap"
+                width={896}
+                height={1152}
+                loading="lazy"
+                className="aspect-[4/5] w-full object-cover transition-transform duration-700 group-hover:scale-105"
+              />
+            </div>
+            <div className="absolute bottom-4 right-4 border border-gold/30 bg-burgundy/90 px-4 py-2 backdrop-blur-sm">
+              <span className="text-xs uppercase tracking-widest text-gold">
+                Handcrafted Artistry
+              </span>
+            </div>
           </div>
-          <a href="#contact" className="mt-9 inline-flex items-center gap-2 text-sm uppercase tracking-[0.16em] text-primary link-line">
-            Our Story <ArrowRight className="h-4 w-4" />
+        </Reveal>
+
+        <Reveal className="lg:col-span-6 lg:col-start-7">
+          <p className="eyebrow text-gold">About Aura Events &amp; Co.</p>
+          <h2 className="mt-4 text-4xl leading-tight text-ivory md:text-5xl">
+            Every Celebration Has an Unwritten Story
+          </h2>
+          <p className="mt-6 font-serif text-2xl leading-snug text-gold/90">
+            We believe an extraordinary celebration should feel effortless, personal, and profoundly
+            moving.
+          </p>
+          <div className="mt-6 space-y-5 text-base leading-relaxed text-rose/90">
+            <p>
+              From the initial creative brainstorm to the final candle placed upon the tables, we
+              translate your aspirations into harmonious spaces. Our work reflects your family
+              traditions, your individual style, and the sentiments that truly matter.
+            </p>
+            <p>
+              By pairing refined architectural styling with quiet, meticulous production, we
+              eliminate the stress of event coordination — allowing you to be wholly present with
+              the people you cherish most.
+            </p>
+          </div>
+
+          <div className="mt-8 grid grid-cols-2 gap-6 border-t border-gold/20 pt-6">
+            <div>
+              <p className="font-serif text-3xl text-ivory">100%</p>
+              <p className="mt-1 text-xs uppercase tracking-widest text-rose/70">
+                Bespoke Design Direction
+              </p>
+            </div>
+            <div>
+              <p className="font-serif text-3xl text-ivory">Quiet</p>
+              <p className="mt-1 text-xs uppercase tracking-widest text-rose/70">
+                Flawless Day-of Execution
+              </p>
+            </div>
+          </div>
+
+          <a
+            href="#contact"
+            className="mt-10 inline-flex items-center gap-3 text-xs uppercase tracking-[0.22em] text-gold link-line"
+          >
+            Schedule a Private Consultation <ArrowRight className="h-4 w-4" />
           </a>
         </Reveal>
       </div>
@@ -57,28 +158,115 @@ export function About() {
 }
 
 export function Services() {
-  const [lead, ...rest] = services;
+  const featuredWedding = services.find((s) => s.featured) || services[0];
+  const secondaryServices = services.filter((s) => !s.featured);
+
   return (
-    <section id="services" className="border-t bg-card py-24 md:py-36">
+    <section id="services" className="border-y border-gold/20 bg-wine/50 py-24 md:py-36">
       <div className="container-x">
-        <SectionHead eyebrow="What We Do" title="Services for every occasion" intro="Planning and decoration shaped around your celebration — from a single ceremony to a multi-day wedding." />
-        <Reveal className="grid gap-10 border-b pb-16 md:grid-cols-2 md:items-center md:gap-16">
-          <img src={lead.image} alt={lead.title} loading="lazy" className="aspect-[4/3] w-full object-cover" />
-          <div>
-            <p className="eyebrow text-muted-foreground">01</p>
-            <h3 className="mt-3 text-3xl md:text-4xl">{lead.title}</h3>
-            <p className="mt-4 leading-relaxed text-muted-foreground">{lead.text}</p>
-            <a href="#contact" className="mt-6 inline-flex items-center gap-2 text-sm text-primary link-line">Enquire about this service <ArrowRight className="h-4 w-4" /></a>
+        <SectionHead
+          eyebrow="What We Do"
+          title="Services for Every Celebration"
+          intro="Art-directed event design, floral curation, and flawless planning shaped around your milestone — from regal multi-day weddings to intimate private dinners."
+        />
+
+        {/* 1. VISUALLY PROMINENT FEATURED WEDDING SECTION */}
+        <Reveal className="mb-16 overflow-hidden border border-gold/30 bg-wine-card/90 shadow-2xl transition-all duration-500 hover:border-gold/50">
+          <div className="grid gap-0 lg:grid-cols-12 lg:items-center">
+            <div className="group relative aspect-[16/10] overflow-hidden bg-burgundy lg:col-span-7 lg:h-full">
+              <img
+                src={featuredWedding.image}
+                alt={featuredWedding.title}
+                loading="lazy"
+                className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-burgundy/80 via-transparent to-transparent lg:hidden" />
+              <div className="absolute left-6 top-6 border border-gold/40 bg-burgundy/85 px-3.5 py-1.5 backdrop-blur-md">
+                <span className="eyebrow text-gold">
+                  {featuredWedding.tag || "Signature Expertise"}
+                </span>
+              </div>
+            </div>
+
+            <div className="flex flex-col justify-between p-8 sm:p-10 lg:col-span-5 lg:p-12">
+              <div>
+                <p className="eyebrow text-gold/80">
+                  {featuredWedding.id} · WEDDINGS &amp; RECEPTIONS
+                </p>
+                <h3 className="mt-3 text-3xl leading-snug text-ivory md:text-4xl">
+                  {featuredWedding.title}
+                </h3>
+                <p className="mt-4 text-base leading-relaxed text-rose/90">
+                  {featuredWedding.text}
+                </p>
+
+                {featuredWedding.highlights && (
+                  <div className="mt-6 space-y-2.5 border-t border-gold/20 pt-6">
+                    <p className="eyebrow text-rose/70">Curated Inclusions</p>
+                    <ul className="space-y-2 text-sm text-rose/90">
+                      {featuredWedding.highlights.map((h) => (
+                        <li key={h} className="flex items-center gap-2.5">
+                          <Check className="h-3.5 w-3.5 shrink-0 text-gold" />
+                          <span>{h}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+
+              <div className="mt-8 pt-4">
+                <a
+                  href="#contact"
+                  className="inline-flex items-center gap-2 border border-gold bg-gold px-6 py-3 text-xs font-semibold uppercase tracking-[0.2em] text-burgundy transition-all duration-300 hover:bg-gold/90"
+                >
+                  Enquire About Weddings <ArrowRight className="h-4 w-4" />
+                </a>
+              </div>
+            </div>
           </div>
         </Reveal>
-        <div className="grid gap-x-10 gap-y-16 pt-16 sm:grid-cols-2 lg:grid-cols-3">
-          {rest.map((s, i) => (
-            <Reveal key={s.title} className={cn(i % 3 === 1 && "lg:mt-16")}>
-              <img src={s.image} alt={s.title} loading="lazy" className={cn("w-full object-cover", i % 2 ? "aspect-[4/5]" : "aspect-[4/3]")} />
-              <p className="eyebrow mt-6 text-muted-foreground">{String(i + 2).padStart(2, "0")}</p>
-              <h3 className="mt-2 text-2xl">{s.title}</h3>
-              <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
-              <a href="#gallery" className="mt-4 inline-flex items-center gap-2 text-sm text-primary link-line">View events <ArrowRight className="h-4 w-4" /></a>
+
+        {/* 2. BALANCED, UNIFORM GRID FOR REMAINING SERVICES */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+          {secondaryServices.map((s) => (
+            <Reveal
+              key={s.title}
+              className="group flex flex-col justify-between border border-gold/20 bg-wine-card/75 transition-all duration-500 hover:-translate-y-1 hover:border-gold/50 hover:shadow-xl hover:shadow-black/40"
+            >
+              <div>
+                {/* UNIFORM ASPECT RATIO (16/10) FOR STRICT VISUAL ALIGNMENT */}
+                <div className="relative aspect-[16/10] overflow-hidden bg-burgundy">
+                  <img
+                    src={s.image}
+                    alt={s.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute bottom-3 left-3 border border-gold/30 bg-burgundy/80 px-2.5 py-1 backdrop-blur-sm">
+                    <span className="eyebrow text-[0.65rem] text-gold">{s.id}</span>
+                  </div>
+                </div>
+
+                {/* CONTENT AREA WITH COMMON BASELINE ALIGNMENT */}
+                <div className="p-6 sm:p-7">
+                  <span className="eyebrow text-[0.68rem] text-gold/80">{s.category}</span>
+                  <h3 className="mt-2 font-serif text-2xl text-ivory transition-colors group-hover:text-gold">
+                    {s.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-rose/85">{s.text}</p>
+                </div>
+              </div>
+
+              <div className="border-t border-gold/15 p-6 pt-4">
+                <a
+                  href="/gallery"
+                  className="inline-flex items-center gap-2 text-xs uppercase tracking-[0.18em] text-gold link-line"
+                >
+                  View Events{" "}
+                  <ArrowRight className="h-3.5 w-3.5 transition-transform group-hover:translate-x-1" />
+                </a>
+              </div>
             </Reveal>
           ))}
         </div>
@@ -90,58 +278,136 @@ export function Services() {
 export function Work() {
   const [active, setActive] = useState<Project | null>(null);
   const list = projects.filter((p) => p.featured).sort((a, b) => a.order - b.order);
-  const layout = ["md:col-span-12 aspect-[16/9]", "md:col-span-5 aspect-[4/5]", "md:col-span-7 aspect-[4/5] md:aspect-auto md:h-full", "md:col-span-12 aspect-[16/9]"];
+
   return (
     <section id="work" className="py-24 md:py-36">
       <div className="container-x">
-        <SectionHead eyebrow="Featured Work" title="Celebrations We've Brought to Life" intro="A selection of setups and styling. Sample projects are shown — replace them with your own completed events." />
-        <div className="grid gap-x-8 gap-y-14 md:grid-cols-12">
-          {list.map((p, i) => (
-            <Reveal key={p.slug} className={cn("flex flex-col", layout[i % layout.length].split(" ")[0])}>
-              <button type="button" onClick={() => setActive(p)} className="group block flex-1 text-left" aria-label={`View project: ${p.title}`}>
-                <div className={cn("overflow-hidden bg-muted", layout[i % layout.length].split(" ").slice(1).join(" "))}>
-                  <img src={p.cover} alt={p.title} loading="lazy" className="h-full w-full object-cover transition-transform duration-[1.2s] group-hover:scale-[1.03]" />
+        <SectionHead
+          eyebrow="Featured Portfolios"
+          title="Celebrations We've Brought to Life"
+          intro="A preview of bespoke set designs, floral architectural moments, and atmospheric evenings created for our clients."
+        />
+
+        <div className="grid gap-8 md:grid-cols-2">
+          {list.map((p) => (
+            <Reveal key={p.slug} className="group flex flex-col">
+              <button
+                type="button"
+                onClick={() => setActive(p)}
+                className="block flex-1 text-left"
+                aria-label={`View project: ${p.title}`}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden border border-gold/25 bg-wine">
+                  <img
+                    src={p.cover}
+                    alt={p.title}
+                    loading="lazy"
+                    className="h-full w-full object-cover object-center transition-transform duration-700 ease-out group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-80" />
+                  <div className="absolute bottom-4 left-4 right-4 flex items-center justify-between">
+                    <span className="eyebrow bg-burgundy/80 px-3 py-1 text-gold backdrop-blur-sm">
+                      {p.category}
+                    </span>
+                    <span className="text-xs uppercase tracking-widest text-ivory/80 opacity-0 transition-opacity group-hover:opacity-100">
+                      View Details →
+                    </span>
+                  </div>
                 </div>
-                <div className="mt-5 flex items-baseline justify-between gap-4 border-b pb-4">
-                  <h3 className="text-2xl md:text-3xl">{p.title}</h3>
-                  <span className="eyebrow shrink-0 text-muted-foreground">{p.category}</span>
+
+                <div className="mt-5 border-b border-gold/20 pb-4">
+                  <h3 className="font-serif text-2xl text-ivory transition-colors group-hover:text-gold md:text-3xl">
+                    {p.title}
+                  </h3>
+                  <p className="mt-2 line-clamp-2 text-sm leading-relaxed text-rose/80">
+                    {p.description}
+                  </p>
                 </div>
-                <p className="mt-3 max-w-xl text-sm leading-relaxed text-muted-foreground">{p.description}</p>
               </button>
             </Reveal>
           ))}
         </div>
       </div>
+
       {active && <ProjectModal project={active} onClose={() => setActive(null)} />}
     </section>
   );
 }
 
 function ProjectModal({ project: p, onClose }: { project: Project; onClose: () => void }) {
-  const details = [["Event type", p.type], ["Theme", p.theme], ["Decoration style", p.style], ["Colour palette", p.palette], ["Location", p.location], ["Date", p.date]].filter(([, v]) => v);
+  const details = [
+    ["Event Type", p.type],
+    ["Theme Concept", p.theme],
+    ["Decoration Style", p.style],
+    ["Color Palette", p.palette],
+    ["Location", p.location],
+    ["Occasion Season", p.date],
+  ].filter(([, v]) => v);
+
   return (
-    <div role="dialog" aria-modal="true" aria-label={p.title} className="fixed inset-0 z-50 overflow-y-auto bg-overlay/80" onClick={onClose}
-      onKeyDown={(e) => e.key === "Escape" && onClose()}>
-      <div className="mx-auto my-8 max-w-4xl bg-background md:my-16" onClick={(e) => e.stopPropagation()}>
-        <div className="flex items-center justify-between border-b px-6 py-4">
-          <span className="eyebrow text-accent">{p.category}</span>
-          <button autoFocus onClick={onClose} aria-label="Close project" className="p-1"><X className="h-5 w-5" /></button>
+    <div
+      role="dialog"
+      aria-modal="true"
+      aria-label={p.title}
+      className="fixed inset-0 z-50 flex items-center justify-center overflow-y-auto bg-overlay/90 p-4 backdrop-blur-sm"
+      onClick={onClose}
+      onKeyDown={(e) => e.key === "Escape" && onClose()}
+    >
+      <div
+        className="relative my-8 max-h-[90vh] w-full max-w-4xl overflow-y-auto border border-gold/30 bg-burgundy text-rose shadow-2xl"
+        onClick={(e) => e.stopPropagation()}
+      >
+        <div className="sticky top-0 z-10 flex items-center justify-between border-b border-gold/20 bg-burgundy/95 px-6 py-4 backdrop-blur-md">
+          <span className="eyebrow text-gold">{p.category}</span>
+          <button
+            autoFocus
+            onClick={onClose}
+            aria-label="Close project modal"
+            className="p-1 text-rose transition-colors hover:text-gold"
+          >
+            <X className="h-6 w-6" />
+          </button>
         </div>
+
         <img src={p.cover} alt={p.title} className="aspect-[16/9] w-full object-cover" />
+
         <div className="grid gap-10 p-6 md:grid-cols-5 md:p-10">
           <div className="md:col-span-3">
-            <h3 className="text-4xl">{p.title}</h3>
-            <p className="mt-5 leading-relaxed text-muted-foreground">{p.description}</p>
-            <p className="eyebrow mt-8 text-muted-foreground">Services delivered</p>
-            <ul className="mt-3 space-y-1 text-sm">{p.services.map((s) => <li key={s}>— {s}</li>)}</ul>
+            <h3 className="text-3xl text-ivory md:text-4xl">{p.title}</h3>
+            <p className="mt-4 leading-relaxed text-rose/90">{p.description}</p>
+
+            <p className="eyebrow mt-8 text-gold">Services Delivered</p>
+            <ul className="mt-3 space-y-1.5 text-sm text-rose/85">
+              {p.services.map((s) => (
+                <li key={s} className="flex items-center gap-2">
+                  <span className="text-gold">•</span> {s}
+                </li>
+              ))}
+            </ul>
           </div>
-          <dl className="space-y-4 border-t pt-6 text-sm md:col-span-2 md:border-l md:border-t-0 md:pl-8 md:pt-0">
-            {details.map(([k, v]) => (<div key={k}><dt className="eyebrow text-muted-foreground">{k}</dt><dd className="mt-1">{v}</dd></div>))}
+
+          <dl className="space-y-4 border-t border-gold/20 pt-6 text-sm md:col-span-2 md:border-l md:border-t-0 md:pl-8 md:pt-0">
+            {details.map(([k, v]) => (
+              <div key={k}>
+                <dt className="eyebrow text-rose/60">{k}</dt>
+                <dd className="mt-1 font-medium text-ivory">{v}</dd>
+              </div>
+            ))}
           </dl>
         </div>
+
         {p.gallery.length > 1 && (
-          <div className="grid grid-cols-2 gap-3 px-6 pb-10 md:px-10">
-            {p.gallery.slice(1).map((g, i) => <img key={i} src={g} alt={`${p.title} detail ${i + 1}`} loading="lazy" className="aspect-[4/3] w-full object-cover" />)}
+          <div className="grid grid-cols-2 gap-4 border-t border-gold/20 px-6 py-8 md:px-10">
+            {p.gallery.slice(1).map((g, i) => (
+              <div key={i} className="overflow-hidden border border-gold/20">
+                <img
+                  src={g}
+                  alt={`${p.title} detail ${i + 1}`}
+                  loading="lazy"
+                  className="aspect-[4/3] w-full object-cover transition-transform hover:scale-105 duration-500"
+                />
+              </div>
+            ))}
           </div>
         )}
       </div>
@@ -151,16 +417,24 @@ function ProjectModal({ project: p, onClose }: { project: Project; onClose: () =
 
 export function Process() {
   return (
-    <section className="border-y bg-secondary py-24 md:py-32">
+    <section id="process" className="border-y border-gold/20 bg-wine/50 py-24 md:py-32">
       <div className="container-x">
-        <SectionHead eyebrow="How We Work" title="A calm, considered process" />
-        <ol className="grid gap-10 md:grid-cols-4 md:gap-8">
+        <SectionHead
+          eyebrow="Our Methodology"
+          title="A Calm, Considered Process"
+          intro="From our first conversational sketch to the final teardown, our process ensures peace of mind, artistic precision, and absolute transparency."
+        />
+
+        <ol className="grid gap-8 md:grid-cols-4">
           {steps.map((s) => (
-            <Reveal key={s.n} className="border-l pl-6 md:border-l-0 md:border-t md:pl-0 md:pt-8">
+            <Reveal
+              key={s.n}
+              className="border-l border-gold/30 pl-6 md:border-l-0 md:border-t md:pl-0 md:pt-8"
+            >
               <li className="list-none">
-                <span className="font-serif text-xl text-accent">{s.n}</span>
-                <h3 className="mt-2 text-3xl">{s.title}</h3>
-                <p className="mt-3 text-sm leading-relaxed text-muted-foreground">{s.text}</p>
+                <span className="font-serif text-2xl text-gold">{s.n}</span>
+                <h3 className="mt-3 text-2xl text-ivory">{s.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-rose/80">{s.text}</p>
               </li>
             </Reveal>
           ))}
@@ -173,19 +447,38 @@ export function Process() {
 export function WhyUs() {
   return (
     <section className="py-24 md:py-36">
-      <div className="container-x grid gap-14 md:grid-cols-12">
-        <Reveal className="md:col-span-4">
-          <p className="eyebrow text-accent">Why Choose Us</p>
-          <h2 className="mt-4 text-4xl leading-tight md:text-5xl">Care in every detail</h2>
-          <img src={images.entrance} alt="Floral entrance walkway with lanterns" loading="lazy" className="mt-10 hidden aspect-[3/4] w-full object-cover md:block" />
+      <div className="container-x grid gap-14 lg:grid-cols-12">
+        <Reveal className="lg:col-span-5">
+          <p className="eyebrow text-gold">Why Choose Us</p>
+          <h2 className="mt-4 text-4xl leading-tight text-ivory md:text-5xl">
+            Care in Every Detail
+          </h2>
+          <p className="mt-5 text-base leading-relaxed text-rose/85">
+            We operate as a boutique studio taking on a limited number of celebrations each season
+            to maintain uncompromising standards of beauty and service.
+          </p>
+          <div className="mt-8 hidden overflow-hidden border border-gold/25 lg:block">
+            <img
+              src={images.entrance}
+              alt="Floral entrance walkway with candle lanterns"
+              loading="lazy"
+              className="aspect-[4/5] w-full object-cover transition-transform hover:scale-105 duration-700"
+            />
+          </div>
         </Reveal>
-        <div className="md:col-span-7 md:col-start-6">
+
+        <div className="lg:col-span-7">
           {reasons.map((r, i) => (
-            <Reveal key={r.title} className="grid grid-cols-[3rem_1fr] gap-4 border-b py-7 first:pt-0">
-              <span className="font-serif text-lg text-muted-foreground">{String(i + 1).padStart(2, "0")}</span>
+            <Reveal
+              key={r.title}
+              className="grid grid-cols-[3rem_1fr] gap-4 border-b border-gold/15 py-7 first:pt-0"
+            >
+              <span className="font-serif text-xl text-gold/80">
+                {String(i + 1).padStart(2, "0")}
+              </span>
               <div>
-                <h3 className="text-2xl">{r.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{r.text}</p>
+                <h3 className="font-serif text-2xl text-ivory">{r.title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-rose/80">{r.text}</p>
               </div>
             </Reveal>
           ))}
@@ -198,18 +491,27 @@ export function WhyUs() {
 export function Testimonials() {
   const [main, ...others] = testimonials;
   return (
-    <section className="bg-primary py-24 text-primary-foreground md:py-32">
+    <section className="border-y border-gold/20 bg-wine/70 py-24 text-rose md:py-32">
       <div className="container-x">
         <Reveal className="mx-auto max-w-3xl text-center">
-          <p className="eyebrow text-accent">Kind Words · Sample content</p>
-          <blockquote className="mt-8 font-serif text-3xl leading-snug md:text-4xl">“{main.quote}”</blockquote>
-          <p className="mt-6 text-sm tracking-wide opacity-80">{main.name} — {main.event}</p>
+          <p className="eyebrow text-gold">Kind Words &amp; Gratitude</p>
+          <blockquote className="mt-8 font-serif text-3xl leading-snug text-ivory md:text-4xl">
+            “{main.quote}”
+          </blockquote>
+          <p className="mt-6 text-xs uppercase tracking-[0.22em] text-gold">
+            {main.name} <span className="opacity-50">—</span> {main.event}
+          </p>
         </Reveal>
-        <div className="mx-auto mt-16 grid max-w-4xl gap-10 border-t border-primary-foreground/20 pt-10 md:grid-cols-2">
+
+        <div className="mx-auto mt-16 grid max-w-4xl gap-8 border-t border-gold/20 pt-10 md:grid-cols-2">
           {others.map((t, i) => (
-            <figure key={i}>
-              <blockquote className="font-serif text-xl leading-snug opacity-90">“{t.quote}”</blockquote>
-              <figcaption className="mt-3 text-xs uppercase tracking-[0.18em] opacity-70">{t.name} — {t.event}</figcaption>
+            <figure key={i} className="border border-gold/20 bg-burgundy/60 p-6 backdrop-blur-sm">
+              <blockquote className="font-serif text-xl leading-snug text-ivory/95">
+                “{t.quote}”
+              </blockquote>
+              <figcaption className="mt-4 text-xs uppercase tracking-[0.18em] text-gold">
+                {t.name} <span className="opacity-50">—</span> {t.event}
+              </figcaption>
             </figure>
           ))}
         </div>
@@ -222,24 +524,46 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
   return (
     <section className="py-24 md:py-36">
-      <div className="container-x grid gap-12 md:grid-cols-12">
-        <div className="md:col-span-4">
-          <p className="eyebrow text-accent">FAQ</p>
-          <h2 className="mt-4 text-4xl leading-tight md:text-5xl">Questions, answered</h2>
+      <div className="container-x grid gap-12 lg:grid-cols-12">
+        <div className="lg:col-span-4">
+          <p className="eyebrow text-gold">FAQ</p>
+          <h2 className="mt-4 text-4xl leading-tight text-ivory md:text-5xl">
+            Questions, Answered
+          </h2>
+          <p className="mt-4 text-sm leading-relaxed text-rose/80">
+            Have a custom requirement or question regarding your venue? Reach out directly via our
+            consultation form.
+          </p>
         </div>
-        <div className="border-t md:col-span-8">
+
+        <div className="border-t border-gold/20 lg:col-span-8">
           {faqs.map((f, i) => {
             const isOpen = open === i;
             return (
-              <div key={f.q} className="border-b">
+              <div key={f.q} className="border-b border-gold/20">
                 <h3 className="font-sans">
-                  <button type="button" aria-expanded={isOpen} aria-controls={`faq-${i}`} onClick={() => setOpen(isOpen ? null : i)}
-                    className="flex w-full items-center justify-between gap-6 py-6 text-left text-base md:text-lg">
-                    {f.q}
-                    {isOpen ? <Minus className="h-4 w-4 shrink-0 text-accent" /> : <Plus className="h-4 w-4 shrink-0 text-accent" />}
+                  <button
+                    type="button"
+                    aria-expanded={isOpen}
+                    aria-controls={`faq-${i}`}
+                    onClick={() => setOpen(isOpen ? null : i)}
+                    className="flex w-full items-center justify-between gap-6 py-6 text-left text-base text-ivory transition-colors hover:text-gold md:text-lg"
+                  >
+                    <span>{f.q}</span>
+                    {isOpen ? (
+                      <Minus className="h-4 w-4 shrink-0 text-gold" />
+                    ) : (
+                      <Plus className="h-4 w-4 shrink-0 text-gold" />
+                    )}
                   </button>
                 </h3>
-                <div id={`faq-${i}`} hidden={!isOpen} className="pb-6 pr-10 leading-relaxed text-muted-foreground">{f.a}</div>
+                <div
+                  id={`faq-${i}`}
+                  hidden={!isOpen}
+                  className="pb-6 pr-10 text-sm leading-relaxed text-rose/85"
+                >
+                  {f.a}
+                </div>
               </div>
             );
           })}

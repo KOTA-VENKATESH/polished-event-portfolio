@@ -1,24 +1,34 @@
-# Polished Event Portfolio
+# Aarav Kulkarni — Event Manager Portfolio
 
-above mentioned details is for  evnet management portfolio details . so make it clean and professional . no need to create th ebackend. make it looks pproofessional
+A bespoke, editorial-style single-page portfolio and case study application for an individual event manager. Designed with rich luxury aesthetics in deep royal burgundy (`#2B0B10`), champagne gold (`#C9A66B`), and warm ivory (`#F3E0C5`).
 
-This project was built with [Lovable](https://lovable.dev).
+## Overview
 
-## Build with Lovable
+- **Continuous Single-Page Scrolling**: Seamless section flow across Home, About, Work, Process, Testimonials, and Contact.
+- **Featured Celebrations**: Curated project showcase with category filters (Weddings, Engagements, Corporate Events, Birthdays, Others).
+- **Event Details Case Studies**: Editorial case study view with high-resolution photography, design highlights, color palettes, and full-screen lightbox.
+- **Interactive Lightbox**: Full-screen photo viewer with keyboard navigation (`Escape`, `ArrowLeft`, `ArrowRight`).
+- **Direct Enquiry**: Interactive booking and consultation form.
 
-Continue developing this project in the [Lovable editor](https://lovable.dev/projects/5c3a0b1f-9687-47ed-b8e5-a5fddec9a0cd).
+## Tech Stack
 
-- **Ship faster**: describe what you want to build and Lovable handles the code.
-- **Stay in sync**: every change made in Lovable is committed straight to this repository.
-- **Full ownership**: this code is yours. Push to `main` on GitHub and your changes sync back into Lovable, ready for your next prompt.
+- **Framework**: TanStack Start / React 19 / Vite
+- **Routing**: TanStack Router
+- **Styling**: Tailwind CSS v4, Lucide Icons
+- **Testing**: Vitest, React Testing Library
 
-## Development
-
-Prefer working locally? You need Node.js and npm — [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating).
+## Getting Started
 
 ```sh
-git clone <this-repository-url>
-cd <repository-name>
-npm i
+# Install dependencies
+npm install
+
+# Start local development server
 npm run dev
+
+# Run automated tests
+npm test
+
+# Production build
+npm run build
 ```

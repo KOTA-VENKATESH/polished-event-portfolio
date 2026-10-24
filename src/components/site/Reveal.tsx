@@ -25,7 +25,17 @@ export function Reveal({ children, className }: { children: ReactNode; className
   );
 }
 
-export function SectionHead({ eyebrow, title, intro, center }: { eyebrow: string; title: string; intro?: string; center?: boolean }) {
+export function SectionHead({
+  eyebrow,
+  title,
+  intro,
+  center,
+}: {
+  eyebrow: string;
+  title: string;
+  intro?: string;
+  center?: boolean;
+}) {
   return (
     <Reveal className={cn("mb-14 max-w-2xl md:mb-20", center && "mx-auto text-center")}>
       <p className="eyebrow text-accent">{eyebrow}</p>

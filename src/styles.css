@@ -5,16 +5,22 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Brand theme — edit the three brand colours here:
- *   --brand-wine  (primary)   --brand-gold (accent)   --brand-ivory (background)
+ * Screen 1 — Premium Event Manager Portfolio Design System
+ *   Primary background: #2B0B10
+ *   Primary text: #D3C2C2
+ *   Warm ivory: #F3E6D0
+ *   Champagne accent: #C9A66B
+ *   Supporting surfaces: #361017, #3A1118
  */
 
 @theme inline {
   --font-serif: "Cormorant Garamond", Georgia, serif;
   --font-sans: "DM Sans", system-ui, sans-serif;
+  --font-script: "Alex Brush", cursive, Georgia, serif;
   --radius-sm: calc(var(--radius) - 2px);
   --radius-md: var(--radius);
   --radius-lg: var(--radius);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-card: var(--card);
@@ -37,53 +43,88 @@
   --color-ink: var(--ink);
   --color-ink-foreground: var(--ink-foreground);
   --color-overlay: var(--overlay);
+
+  /* Specific palette tokens */
+  --color-burgundy: #2b0b10;
+  --color-burgundy-surface: #361017;
+  --color-wine: #3a1118;
+  --color-champagne: #c9a66b;
+  --color-gold: #c9a66b;
+  --color-rose: #d3c2c2;
+  --color-ivory: #f3e0c5;
 }
 
 :root {
-  --brand-wine: oklch(0.36 0.1 18);
-  --brand-gold: oklch(0.7 0.1 75);
-  --brand-ivory: oklch(0.975 0.012 85);
+  --brand-burgundy: #2b0b10;
+  --brand-burgundy-surface: #361017;
+  --brand-wine: #3a1118;
+  --brand-champagne: #c9a66b;
+  --brand-rose: #d3c2c2;
+  --brand-ivory: #f3e0c5;
 
   --radius: 2px;
-  --background: var(--brand-ivory);
-  --foreground: oklch(0.24 0.02 40);
-  --card: oklch(0.99 0.006 85);
-  --card-foreground: var(--foreground);
-  --popover: var(--card);
-  --popover-foreground: var(--foreground);
-  --primary: var(--brand-wine);
-  --primary-foreground: oklch(0.97 0.012 85);
-  --secondary: oklch(0.94 0.018 80);
-  --secondary-foreground: var(--foreground);
-  --muted: oklch(0.94 0.015 80);
-  --muted-foreground: oklch(0.48 0.02 50);
-  --accent: var(--brand-gold);
-  --accent-foreground: oklch(0.22 0.03 50);
-  --destructive: oklch(0.55 0.2 27);
-  --destructive-foreground: oklch(0.98 0 0);
-  --border: oklch(0.87 0.02 75);
-  --input: oklch(0.85 0.02 75);
-  --ring: var(--brand-gold);
-  --ink: oklch(0.2 0.02 30);
-  --ink-foreground: oklch(0.95 0.012 85);
-  --overlay: oklch(0.15 0.02 30);
+  --background: var(--brand-burgundy);
+  --foreground: var(--brand-rose);
+  --card: var(--brand-burgundy-surface);
+  --card-foreground: var(--brand-rose);
+  --popover: var(--brand-burgundy-surface);
+  --popover-foreground: var(--brand-rose);
+  --primary: var(--brand-ivory);
+  --primary-foreground: var(--brand-burgundy);
+  --secondary: var(--brand-burgundy-surface);
+  --secondary-foreground: var(--brand-ivory);
+  --muted: #381219;
+  --muted-foreground: #b5a1a1;
+  --accent: var(--brand-champagne);
+  --accent-foreground: var(--brand-burgundy);
+  --destructive: #8b1e2b;
+  --destructive-foreground: #f3e0c5;
+  --border: rgba(243, 224, 197, 0.16);
+  --input: rgba(201, 166, 107, 0.28);
+  --ring: var(--brand-champagne);
+  --ink: #1b060a;
+  --ink-foreground: var(--brand-ivory);
+  --overlay: rgba(20, 4, 7, 0.92);
 }
 
 @layer base {
-  * { border-color: var(--color-border); }
-  html { scroll-behavior: smooth; }
+  * {
+    border-color: var(--color-border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
   @media (prefers-reduced-motion: reduce) {
-    html { scroll-behavior: auto; }
-    *, *::before, *::after { animation: none !important; transition: none !important; }
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation: none !important;
+      transition: none !important;
+    }
   }
   body {
     background-color: var(--color-background);
     color: var(--color-foreground);
     font-family: var(--font-sans);
     -webkit-font-smoothing: antialiased;
+    overflow-x: hidden;
   }
-  h1, h2, h3, h4 { font-family: var(--font-serif); font-weight: 500; letter-spacing: -0.01em; }
-  :focus-visible { outline: 2px solid var(--ring); outline-offset: 3px; }
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-serif);
+    font-weight: 500;
+    letter-spacing: -0.015em;
+    color: var(--brand-ivory);
+  }
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 3px;
+  }
 }
 
 @utility eyebrow {
@@ -91,33 +132,55 @@
   font-size: 0.72rem;
   letter-spacing: 0.24em;
   text-transform: uppercase;
-  font-weight: 500;
+  font-weight: 600;
+  color: #c9a66b;
 }
 
 @utility container-x {
   width: 100%;
-  max-width: 76rem;
+  max-width: 84rem;
   margin-inline: auto;
-  padding-inline: 1.25rem;
-  @media (min-width: 768px) { padding-inline: 2.5rem; }
-}
-
-@utility hero-scrim {
-  background: linear-gradient(180deg, color-mix(in oklab, var(--overlay) 55%, transparent) 0%, color-mix(in oklab, var(--overlay) 20%, transparent) 40%, color-mix(in oklab, var(--overlay) 75%, transparent) 100%);
-}
-
-@utility reveal {
-  opacity: 0;
-  transform: translateY(18px);
-  transition: opacity 0.9s ease, transform 0.9s ease;
-  &.is-visible { opacity: 1; transform: none; }
+  padding-inline: 1.5rem;
+  @media (min-width: 768px) {
+    padding-inline: 3rem;
+  }
+  @media (min-width: 1280px) {
+    padding-inline: 4rem;
+  }
 }
 
 @utility link-line {
-  background-image: linear-gradient(currentColor, currentColor);
+  background-image: linear-gradient(#c9a66b, #c9a66b);
   background-size: 0% 1px;
   background-position: 0 100%;
   background-repeat: no-repeat;
   transition: background-size 0.35s ease;
-  &:hover { background-size: 100% 1px; }
+  &:hover {
+    background-size: 100% 1px;
+  }
+}
+
+@utility photo-blend {
+  mask-image: radial-gradient(ellipse at center, black 65%, transparent 100%);
+  -webkit-mask-image: radial-gradient(ellipse at center, black 65%, transparent 100%);
+}
+
+/* Subtle scroll indicator line animation */
+@keyframes scrollPulse {
+  0% {
+    transform: translateY(0);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(12px);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(24px);
+    opacity: 0;
+  }
+}
+
+.scroll-line {
+  animation: scrollPulse 2.4s cubic-bezier(0.65, 0, 0.35, 1) infinite;
 }
